@@ -3,18 +3,12 @@ using System;
 public class Solution {
     public string solution(string video_len, string pos, string op_start, string op_end, string[] commands) {
         string answer = "";
+
+        int VideoTime = StrSplit(video_len);
+        int NowTime = StrSplit(pos);
+        int OpStartTime = StrSplit(op_start);
+        int OpEndTime = StrSplit(op_end);
         
-        string[] VideoTimes = video_len.Split(":");
-        int VideoTime = Int32.Parse(VideoTimes[0]) * 60 + Int32.Parse(VideoTimes[1]);
-        
-        string[] NowTimes = pos.Split(":");
-        int NowTime = Int32.Parse(NowTimes[0]) * 60 + Int32.Parse(NowTimes[1]);
-        
-        string[] OpStartTimes = op_start.Split(":");
-        int OpStartTime = Int32.Parse(OpStartTimes[0]) * 60 + Int32.Parse(OpStartTimes[1]);
-        
-        string[] OpEndTimes = op_end.Split(":");
-        int OpEndTime = Int32.Parse(OpEndTimes[0]) * 60 + Int32.Parse(OpEndTimes[1]);
         
         for(int i = 0; i < commands.Length; i++)
         {
@@ -74,5 +68,11 @@ public class Solution {
         {
             return NowTime;
         }
+    }
+    
+    int StrSplit(string Str)
+    {
+        string[] str = Str.Split(":");
+        return Int32.Parse(str[0]) * 60 + Int32.Parse(str[1]);
     }
 }
